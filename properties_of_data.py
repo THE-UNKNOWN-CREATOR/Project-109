@@ -1,11 +1,7 @@
-import csv
 import pandas as pd
 import plotly.figure_factory as pf
 import statistics
 import plotly.graph_objects as go
-
-count = []
-marks_data = []
 
 raw_data = pd.read_csv("StudentsPerformance.csv")
 marks_data = []
@@ -14,21 +10,18 @@ raw_math_score = raw_data["math score"]
 raw_reading_score = raw_data["reading score"]
 raw_writing_score = raw_data["writing score"]
 
-math_score = []
-reading_score = []
-writing_score = []
+def raw_to_int(raw):
+    i = []
 
-for m in raw_math_score:
-    i_m = int(m)
-    math_score.append(i_m)
+    for val in raw:
+        i_v = int(val)
+        i.append(i_v)
 
-for r in raw_reading_score:
-    i_r = int(r)
-    reading_score.append(i_r)
+    return i
 
-for w in raw_writing_score:
-    i_w = int(w)
-    writing_score.append(i_w)
+math_score = raw_to_int(raw_math_score)
+reading_score = raw_to_int(raw_reading_score)
+writing_score = raw_to_int(raw_writing_score)
 
 score_len = len(raw_data)
 
